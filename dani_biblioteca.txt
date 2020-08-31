@@ -1,0 +1,21 @@
+def discrete_hist(x):
+    "Plota o histograma de uma variável discreta"
+    bin_edges = np.arange(x.min()-0.5, x.max()+0.5+1, 1)
+    plt.hist(x, rwidth=0.7, bins = bin_edges)
+    plt.xticks(np.arange(x.min(), x.max()+1, 1))
+    plt.ylabel('Count')
+
+
+def discrete_hist2d(x, y):
+    "Plota o histograma 2d de duas variáveis discretas."
+    bin_x = np.arange(x.min()-0.5, x.max()+0.5+1, 1)
+    bin_y = 20
+    plt.hist2d(x, y, bins = [bin_x, bin_y], cmin=0.5, cmap='viridis_r')
+    plt.xticks(np.arange(x.min(), x.max()+1, 1))
+    plt.colorbar()
+
+def nominal_barplot(x):
+    "Bar plot de uma variável nominal."
+    base_color = sns.color_palette()[3]
+    cat_order = x.value_counts().index
+    sns.countplot(x, color=base_color, order=cat_order)
